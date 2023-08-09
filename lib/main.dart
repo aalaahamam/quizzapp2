@@ -95,6 +95,17 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+              const Text(
+              'Aalaa Ahmed Mansour Hamam',
+              style: TextStyle(
+                color: Color.fromARGB(255, 26, 112, 182),
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(height: 20,),
+            const Text(
+              'You have pushed the button this many times:',
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
