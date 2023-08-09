@@ -24,13 +24,14 @@ class quizz extends StatelessWidget {
 
          Column(
            children: [
-            SizedBox(height: 200,),
+            SizedBox(height: 190,),
              Image(
-            image: AssetImage('images/qui1.jpg'),),
+            image: AssetImage('images/qui1.png'), 
+            width: 200, ),
 
 
 
-            SizedBox(height: 30,),
+            SizedBox(height: 5,),
              Container(  //second child
                alignment: Alignment.center,
                child: Text(
@@ -45,7 +46,7 @@ class quizz extends StatelessWidget {
 
                
                ),
- SizedBox(height: 7,),
+ SizedBox(height: 10,),
  Container(  //second child
                alignment: Alignment.center,
                child: Text(
@@ -58,7 +59,7 @@ class quizz extends StatelessWidget {
                     ),
                ),
  ),
- SizedBox(height: 220,),
+ SizedBox(height: 250,),
 
  Container(  
               decoration: BoxDecoration(
