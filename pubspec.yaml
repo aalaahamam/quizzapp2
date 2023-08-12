@@ -62,7 +62,9 @@ flutter:
   assets:
     - images/wall.jpeg
     - images/qui1.png
-
+    - images/tiny_poo.png
+    - images/green.png
+    - images/pas1.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
