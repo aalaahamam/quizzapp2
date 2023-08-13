@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'Screens/category_screen.dart';
 import 'Screens/opening_screen.dart';
 import 'Screens/login.dart';
+import 'Screens/quizzscreen.dart';
+import 'Screens/scor_screen.dart';
 
 void main() {
   runApp(quizz());
@@ -14,7 +17,7 @@ class quizz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: login(),
+        home:QuizzScreen(),
 
             // login(),
        
