@@ -86,12 +86,9 @@ class login extends StatelessWidget {
                       if(value!.isEmpty){
                         return" username should not be empty";
                       }else if(value.length<8){
-                        return "username must be greater than 8";
-                      }
-                      // }else if(){
-                      //   return "username must be greater than 8";
-
-                      // }
+                        return "username must be greater than 8";   
+                        }
+                
                     },
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.person),
@@ -217,9 +214,9 @@ class login extends StatelessWidget {
                
                      ElevatedButton(
               onPressed: () {
-
+///// validation
                 if(_formkey.currentState!.validate())
-
+////////
                 Navigator.push(
 
                  
