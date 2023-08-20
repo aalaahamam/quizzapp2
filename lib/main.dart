@@ -19,7 +19,7 @@ class quizz extends StatelessWidget {
     return MaterialApp(
       
         // ignore: prefer_const_literals_to_create_immutables
-        home:CategoryScreen()
+        home:OpeningScreen()
 
   
       

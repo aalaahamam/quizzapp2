@@ -12,7 +12,7 @@ class CategoryContainer extends StatelessWidget {
   });
 
   List quizName = ["Sport Test", "Sciense Test", "General Test","History Test","Art Test","math Test"];
-  List quizColor = [Colors.blue, Colors.red, Colors.yellow,Colors.purple,Colors.green,Colors.brown];
+  List quizColor = [Colors.purple, Colors.yellow, Colors.green ,Colors.pink,Colors.orange,Colors.brown];
 
   @override
   Widget build(BuildContext context) {

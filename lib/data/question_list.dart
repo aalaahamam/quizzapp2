@@ -40,7 +40,7 @@ List <Map<String,dynamic>> dataBase=[
 {
   //key
 "Category":"science test",
-"color":Color.fromARGB(255, 164, 85, 179),
+"color":Color.fromARGB(255, 181, 81, 199),
 "data":[   // list of map 
   {
     "question":'What happens to a body when its density is equal to the density of the fluid',
@@ -97,7 +97,7 @@ List <Map<String,dynamic>> dataBase=[
 },
 {
   "Category": "History Test",
-  "color": Colors.purple,
+  "color": Color.fromARGB(255, 147, 84, 158),
   "data": [
     {
       "question": "Who was the first President of the United States?",
@@ -139,7 +139,7 @@ List <Map<String,dynamic>> dataBase=[
 },
 {
   "Category": "Art Test",
-  "color": Colors.green,
+  "color": Color.fromARGB(255, 175, 70, 194),
   "data": [
     {
       "question": "Who painted the Mona Lisa?",
@@ -181,7 +181,7 @@ List <Map<String,dynamic>> dataBase=[
 },
 {
   "Category": "Math Test",
-  "color": Colors.brown,
+  "color": Colors.purple,
   "data": [
     {
       "question": "What is the result of 2 + 3?",
