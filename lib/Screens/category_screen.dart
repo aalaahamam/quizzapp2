@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quizapp_iti/Screens/quizzscreen.dart';
 import 'package:quizapp_iti/widgets/cont.dart';
 
-  
-
 class CategoryScreen extends StatelessWidget {
   CategoryScreen({super.key});
 
@@ -12,7 +10,7 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          for (int i = 0; i < 3; i++)
+          for (int i = 0; i < 6; i++)
             CategoryContainer(
               index: i,
             )
@@ -23,3 +21,4 @@ class CategoryScreen extends StatelessWidget {
     );
   }
 }
+

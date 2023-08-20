@@ -3,35 +3,45 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:quizapp_iti/Screens/category_screen.dart';
 import 'package:quizapp_iti/Screens/opening_screen.dart';
+import 'package:quizapp_iti/data/question_list.dart';
 
 class ScorScreen extends StatelessWidget {
-  const ScorScreen({super.key});
+  final int TotalScore;
+  final int totalNumOfquestion;
+  const ScorScreen(
+      {super.key, required this.TotalScore, required this.totalNumOfquestion});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-    
-         child: Column(
-              children: [
-
-
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                ),
-              Center(
-                child: Text(
-                     "Hello ,Aalaa Your Scor Is 10/10",style: TextStyle(color: Colors.black
-                     ,
-                     fontFamily: 'Pacifico',
-                     fontSize: 25),
-                  
-                        // MediaQuery.of(context).orientation==Orientation.landscape
-                   
-                  ),
-              ),
-              SizedBox(height: 100,),
-     ElevatedButton(
+        body: SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            RichText(
+                text: TextSpan(
+                    text: "Congrate ",
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                        fontFamily: 'Pacifico'),
+                    children: [
+                  TextSpan(
+                      //////////////// اسم مركب
+                      text: '${usernameControl.text} \n ',
+                      ///////////////
+                      style: TextStyle(color: Colors.purple, fontSize: 25)),
+                  TextSpan(text: "your score is "),
+                  TextSpan(
+                      text: "$TotalScore/$totalNumOfquestion",
+                      style: TextStyle(color: Colors.purple, fontSize: 25)),
+                ])),
+            SizedBox(
+              height: 100,
+            ),
+            ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -40,11 +50,11 @@ class ScorScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text("Reset Quiz",
-              style: TextStyle(color: Colors.white
-                     ,
-                     fontFamily: 'Pacifico',
-                     fontSize: 25),),
+              child: Text(
+                "Reset Quiz",
+                style: TextStyle(
+                    color: Colors.white, fontFamily: 'Pacifico', fontSize: 25),
+              ),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
@@ -54,8 +64,10 @@ class ScorScreen extends StatelessWidget {
                   elevation: 10,
                   minimumSize: Size(180, 60)),
             ),
- SizedBox(height: 100,),
-             ElevatedButton(
+            SizedBox(
+              height: 100,
+            ),
+            ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -64,12 +76,11 @@ class ScorScreen extends StatelessWidget {
                   ),
                 );
               },
-               child:Text("Play again ",
-              style: TextStyle(color: Colors.white
-                     ,
-                     fontFamily: 'Pacifico',
-                     fontSize: 25),),
-
+              child: Text(
+                "Play again ",
+                style: TextStyle(
+                    color: Colors.white, fontFamily: 'Pacifico', fontSize: 25),
+              ),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
@@ -79,14 +90,7 @@ class ScorScreen extends StatelessWidget {
                   elevation: 10,
                   minimumSize: Size(180, 60)),
             ),
-
-
-
-       
-      ]
-      ),
-
-      
+          ]),
     ));
   }
 }

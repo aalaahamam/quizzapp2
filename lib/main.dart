@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp_iti/data/question_list.dart';
+import 'package:quizapp_iti/widgets/cont.dart';
 
 import 'Screens/category_screen.dart';
 import 'Screens/opening_screen.dart';
@@ -18,7 +19,7 @@ class quizz extends StatelessWidget {
     return MaterialApp(
       
         // ignore: prefer_const_literals_to_create_immutables
-        home:  ScorScreen()
+        home:CategoryScreen()
 
   
       

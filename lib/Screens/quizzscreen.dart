@@ -5,9 +5,8 @@ import 'package:quizapp_iti/Screens/scor_screen.dart';
 import 'package:quizapp_iti/data/question_list.dart';
 
 class QuizzScreen extends StatefulWidget {
-  final categorymap;
-  QuizzScreen({super.key,required this.categorymap});
-
+  final Map categorymap;
+  QuizzScreen({super.key, required this.categorymap});
 
 // int index =0;
   @override
@@ -16,6 +15,7 @@ class QuizzScreen extends StatefulWidget {
 
 class _QuizzScreenState extends State<QuizzScreen> {
   int index = 0;
+  int Totalscore = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +25,12 @@ class _QuizzScreenState extends State<QuizzScreen> {
           centerTitle: true,
           automaticallyImplyLeading: false,
           title: Text(
-           widget.categorymap['Category'],
+            widget.categorymap['Category'],
             style: TextStyle(fontSize: 25, fontFamily: ''),
           ),
           leading: Center(
               child: Text(
-            "${index + 1}/${widget.categorymap['data'] as List}).length}",
+            "${index + 1}/${(widget.categorymap['data'] as List).length}",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
           )),
           actions: const [
@@ -59,27 +59,40 @@ class _QuizzScreenState extends State<QuizzScreen> {
                   height: 20,
                 ),
                 for (int i = 0;
-                    i < (widget.categorymap['data'][index]['answer'] as List).length;
+                    i <
+                        (widget.categorymap['data'][index]['answer'] as List)
+                            .length;
                     i++)
                   // for (int i = 0; i < 4; i++)
                   ElevatedButton(
                     onPressed: () {
-                      if (index + 1 < (widget.categorymap['data'] as List).length) {
+  ////// ليه اخر سكور متحسبش 
+                        Totalscore = Totalscore +
+                                  widget.categorymap['data'][index]['answer'][i]['score']
+                              as int;
+
+                      if (index + 1 <
+                          (widget.categorymap['data'] as List).length) {
                         setState(() {
-                          index++;
+                             index++;
+                       
                         });
+                     
                       } else {
                         Navigator.pushReplacement<void, void>(
                           context,
                           MaterialPageRoute<void>(
                             builder: (BuildContext context) =>
-                                const ScorScreen(),
+                                 ScorScreen(
+                                  TotalScore:Totalscore,
+                                  totalNumOfquestion: index+1,
+                                 ),
                           ),
                         );
                       }
                     },
                     child: Text(
-                     widget.categorymap['data'][index]['answer'][i]['ans'],
+                      widget.categorymap['data'][index]['answer'][i]['ans'],
                       style: TextStyle(
                         fontSize: 25,
                       ),

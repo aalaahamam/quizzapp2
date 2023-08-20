@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:quizapp_iti/Screens/category_screen.dart';
+import 'package:quizapp_iti/data/question_list.dart';
 
 class login extends StatelessWidget {
   login({super.key});
@@ -17,6 +18,7 @@ class login extends StatelessWidget {
       return false;
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,10 @@ class login extends StatelessWidget {
                   height: 20,
                 ),
                 TextFormField(
+                  /// عشان امسك الاسم اللي هدخله 
+                  controller:usernameControl,
                   validator: (value) {
+
                     if (value!.isEmpty) {
                       return " username should not be empty";
                     } else if (value.length < 8) {
