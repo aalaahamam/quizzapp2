@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-List datalist=[
+List <Map<String,dynamic>> dataBase=[
 {
   //key
 "Category":"Sport test",

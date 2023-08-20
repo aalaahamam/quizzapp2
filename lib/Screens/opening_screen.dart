@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp_iti/Screens/login.dart';
 
 class OpeningScreen extends StatelessWidget {
   const OpeningScreen({super.key});
@@ -26,7 +27,7 @@ class OpeningScreen extends StatelessWidget {
                   image: AssetImage('images/qui1.png'),
                   height:
                       // MediaQuery.of(context).orientation==Orientation.landscape
-                      MediaQuery.of(context).size.height * 0.2,
+                      MediaQuery.of(context).size.height * 0.3,
                 ),
 
                 SizedBox(
@@ -40,7 +41,7 @@ class OpeningScreen extends StatelessWidget {
 
                       TextStyle(
                     color: Colors.yellow,
-                    fontSize: 24,
+                    fontSize: 28,
                     fontFamily: 'Pacifico',
                   ),
                 ),
@@ -48,7 +49,7 @@ class OpeningScreen extends StatelessWidget {
                   'We Are Creative enjoy our App',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 26,
+                    fontSize: 28,
                     fontFamily: 'Dancing Script',
                   ),
                 ),
@@ -62,7 +63,19 @@ class OpeningScreen extends StatelessWidget {
                     // padding: EdgeInsets.all(8),
                     width: double.infinity,
                     child:
-                        ElevatedButton(onPressed: () {}, child: Text("Start")),
+                        ElevatedButton(onPressed: () {
+                          Navigator.push(
+
+                 
+
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => login(),)
+
+                  );
+                        }, child: Text("Start",style: TextStyle(
+                          fontSize: 20
+                        ),)),
                   ),
                 ),
               ],

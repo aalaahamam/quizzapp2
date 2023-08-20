@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp_iti/Screens/quizzscreen.dart';
+import 'package:quizapp_iti/data/question_list.dart';
 
 
 class CategoryContainer extends StatelessWidget {
@@ -21,8 +22,12 @@ class CategoryContainer extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute<void>(
-              builder: (BuildContext context) => const QuizzScreen(),
+            MaterialPageRoute<void>( 
+              ///نبعت برامتر 
+              builder: (BuildContext context) =>
+               QuizzScreen(categorymap: dataBase[index],),
+               
+              
             ),
           );
         },
