@@ -3,8 +3,28 @@ import 'package:quizapp_iti/Screens/quizzscreen.dart';
 import 'package:quizapp_iti/widgets/cont.dart';
 
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   CategoryScreen({Key ?key}) : super(key: key);
+
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> with TickerProviderStateMixin {
+      late AnimationController  _slideLogocontrol;
+      late AnimationController  _fadeTextcontroller;
+      
+ @override
+  void initState(){
+
+super.initState();
+
+_slideLogocontrol=AnimationController(vsync: this,duration: Duration(milliseconds:1500 ));
+
+_slideLogocontrol.forward();
+
+
+  }
 
   Future<bool> _onBackPressed(BuildContext context) async {
     return await showDialog(
@@ -31,13 +51,17 @@ class CategoryScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () => _onBackPressed(context),
       child: Scaffold(
-        body: Column(
-          children: [
-            for (int i = 0; i < 6; i++)
-              CategoryContainer(
-                index: i,
-              )
-          ],
+        body: SlideTransition(
+                          position: Tween<Offset>(begin:Offset(0, -1),end: Offset(0,0) ).animate(_slideLogocontrol),
+
+          child: Column(
+            children: [
+              for (int i = 0; i < 6; i++)
+                CategoryContainer(
+                  index: i,
+                )
+            ],
+          ),
         ),
       ),
     );

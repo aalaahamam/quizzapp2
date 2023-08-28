@@ -13,7 +13,28 @@ class QuizzScreen extends StatefulWidget {
   State<QuizzScreen> createState() => _QuizzScreenState();
 }
 
-class _QuizzScreenState extends State<QuizzScreen> {
+class _QuizzScreenState extends State<QuizzScreen> 
+
+
+
+with TickerProviderStateMixin {
+      late AnimationController  _slideLogocontrol;
+      late AnimationController  _fadeTextcontroller;
+      
+ @override
+  void initState(){
+
+super.initState();
+
+_slideLogocontrol=AnimationController(vsync: this,duration: Duration(milliseconds:1500 ));
+_fadeTextcontroller=AnimationController(vsync: this,duration: Duration(seconds: 2));
+
+_slideLogocontrol.forward();
+_fadeTextcontroller.forward();
+
+  }
+
+
   int index = 0;
   int Totalscore = 0;
 
@@ -43,72 +64,81 @@ class _QuizzScreenState extends State<QuizzScreen> {
         body: SizedBox(
           width: double.infinity,
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(widget.categorymap['data'][index]['question'],
-                      style: TextStyle(
-                        fontSize: 25,
-                      )
-                      //  color: Col GoogleFonts.amaranth(ors.red, fontSize: 25),
-                      ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                for (int i = 0;
-                    i <
-                        (widget.categorymap['data'][index]['answer'] as List)
-                            .length;
-                    i++)
-                  // for (int i = 0; i < 4; i++)
-                  ElevatedButton(
-                    onPressed: () {
-  ////// ليه اخر سكور متحسبش 
-                        Totalscore = Totalscore +
-                                  widget.categorymap['data'][index]['answer'][i]['score']
-                              as int;
-
-                      if (index + 1 <
-                          (widget.categorymap['data'] as List).length) {
-                        setState(() {
-                             index++;
-                       
-                        });
-                     
-                      } else {
-                        Navigator.pushReplacement<void, void>(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) =>
-                                 ScorScreen(
-                                  TotalScore:Totalscore,
-                                  totalNumOfquestion: index+1,
-                                 ),
+            child: FadeTransition(
+              opacity: _fadeTextcontroller,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(widget.categorymap['data'][index]['question'],
+                        style: TextStyle(
+                          fontSize: 25,
+                        )
+                        //  color: Col GoogleFonts.amaranth(ors.red, fontSize: 25),
+                        ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  for (int i = 0;
+                      i <
+                          (widget.categorymap['data'][index]['answer'] as List)
+                              .length;
+                      i++)
+                    // for (int i = 0; i < 4; i++)
+                    FadeTransition(
+                      opacity: _fadeTextcontroller,
+                      child: ElevatedButton(
+                        onPressed: () {
+                                  ////// ليه اخر سكور متحسبش 
+                            Totalscore = Totalscore +
+                                      widget.categorymap['data'][index]['answer'][i]['score']
+                                  as int;
+                                
+                          if (index + 1 <
+                              (widget.categorymap['data'] as List).length) {
+                            setState(() {
+                                 index++;
+                           
+                            });
+                         
+                          } else {
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>
+                                     ScorScreen(
+                                      TotalScore:Totalscore,
+                                      totalNumOfquestion: index+1,
+                                     ),
+                              ),
+                            );
+                          }
+                        },
+                        child: FadeTransition(
+                          opacity: _fadeTextcontroller,
+                          child: Text(
+                            widget.categorymap['data'][index]['answer'][i]['ans'],
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),
                           ),
-                        );
-                      }
-                    },
-                    child: Text(
-                      widget.categorymap['data'][index]['answer'][i]['ans'],
-                      style: TextStyle(
-                        fontSize: 25,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            backgroundColor: Color.fromARGB(255, 176, 17, 197),
+                            elevation: 10,
+                            minimumSize: Size(280, 40)),
                       ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                        backgroundColor: Color.fromARGB(255, 176, 17, 197),
-                        elevation: 10,
-                        minimumSize: Size(280, 40)),
+                  SizedBox(
+                    height: 200,
                   ),
-                SizedBox(
-                  height: 200,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));

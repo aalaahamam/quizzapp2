@@ -4,10 +4,40 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:quizapp_iti/Screens/category_screen.dart';
 import 'package:quizapp_iti/data/question_list.dart';
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
   login({super.key});
+
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login>  with TickerProviderStateMixin {
+      late AnimationController  _slideLogocontrol;
+      late AnimationController  _fadeTextcontroller;
+      
+ @override
+  void initState(){
+
+super.initState();
+
+_slideLogocontrol=AnimationController(vsync: this,duration: Duration(milliseconds:1500 ));
+_fadeTextcontroller=AnimationController(vsync: this,duration: Duration(seconds: 4));
+
+_slideLogocontrol.forward();
+_fadeTextcontroller.forward();
+
+  }
+
+
+
+
+
+
+
   final _formkey = GlobalKey<FormState>();
+
   RegExp pass_vaild = RegExp("");
+
   // "r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#&*~]).{9,}"
   bool validatepass(String pass) {
     String _password = pass.trim();
@@ -18,7 +48,6 @@ class login extends StatelessWidget {
       return false;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +63,12 @@ class login extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             color: Colors.purple,
             child: Center(
-              child: Image.asset(
-                "images/tiny_poo.png",
-                height: 180,
+              child: SlideTransition(
+                position: Tween<Offset>(begin:Offset(0, -1),end: Offset(0,0) ).animate(_slideLogocontrol),
+                child: Image.asset(
+                  "images/tiny_poo.png",
+                  height: 180,
+                ),
               ),
             ),
           ),
@@ -53,12 +85,15 @@ class login extends StatelessWidget {
             key: _formkey,
             child: Column(
               children: [
-                Text(
-                  "Login",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-                    fontFamily: 'Pacifico',
+                FadeTransition(
+                  opacity: _fadeTextcontroller,
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 40,
+                      fontFamily: 'Pacifico',
+                    ),
                   ),
                 ),
                 SizedBox(
